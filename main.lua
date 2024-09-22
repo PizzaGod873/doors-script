@@ -1812,6 +1812,11 @@ local NotifyTabBox = Tabs.Visuals:AddRightTabbox() do
             Default = false,
         })
 
+	NotifyTab:AddToggle("ChatNotifyEntity", {
+            Text = "Notify Entity In Chat",
+            Default = false,
+        })
+		
         NotifyTab:AddToggle("NotifyPadlock", {
             Text = "Notify Library Code",
             Default = false,
@@ -3698,6 +3703,9 @@ Library:GiveSignal(workspace.ChildAdded:Connect(function(child)
 
                     if Toggles.NotifyEntity.Value then
                         Script.Functions.Alert(entityName .. " has spawned!")
+                    end
+									
+		    if Toggles.ChatNotifyEntity.Value then
 			RBXGeneral:SendAsync(entityName .. " has spawned!")
                     end
                 end
